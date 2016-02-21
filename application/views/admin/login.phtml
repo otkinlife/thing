@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>登录界面</title>
+<style type="text/css">
+#dark {
+	background-color: #333;
+	border: 1px solid #000;
+	padding: 10px;
+	margin-top: 20px;
+}
+
+#light {
+	background-color: #FFF;
+	border: 1px solid #dedede;
+	padding: 10px;
+	margin-top: 20px;
+}
+
+li {
+	list-style: none;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.button,.button:visited {
+	background: #222 url(/overlay.png) repeat-x;
+	display: inline-block;
+	padding: 5px 10px 6px;
+	color: #fff;
+	text-decoration: none;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+	text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+	position: relative;
+	cursor: pointer
+}
+
+.button:hover {
+	background-color: #111;
+	color: #fff;
+}
+
+.button:active {
+	top: 1px;
+}
+
+.small.button,.small.button:visited {
+	font-size: 11px
+}
+
+.button,.button:visited,.medium.button,.medium.button:visited {
+	font-size: 13px;
+	font-weight: bold;
+	line-height: 1;
+	text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);
+}
+
+.large.button,.large.button:visited {
+	font-size: 14px;
+	padding: 8px 14px 9px;
+}
+
+.super.button,.super.button:visited {
+	font-size: 34px;
+	padding: 8px 14px 9px;
+}
+
+.pink.button,.magenta.button:visited {
+	background-color: #e22092;
+}
+
+.pink.button:hover {
+	background-color: #c81e82;
+}
+
+.green.button,.green.button:visited {
+	background-color: #91bd09;
+}
+
+.green.button:hover {
+	background-color: #749a02;
+}
+
+.red.button,.red.button:visited {
+	background-color: #e62727;
+}
+
+.red.button:hover {
+	background-color: #cf2525;
+}
+
+.orange.button,.orange.button:visited {
+	background-color: #ff5c00;
+}
+
+.orange.button:hover {
+	background-color: #d45500;
+}
+
+.blue.button,.blue.button:visited {
+	background-color: #3AB3D6;
+}
+
+.blue.button:hover {
+	background-color: #3AB3D6;
+}
+
+.yellow.button,.yellow.button:visited {
+	background-color: #ffb515;
+}
+
+.yellow.button:hover {
+	background-color: #fc9200;
+}
+
+body {
+	background: url(<?php echo ROOT_DOMAIN ?>/img/bg.gif);
+	background-repeat: repeat-y;
+	margin: 0px;
+	padding: 0px;
+}
+
+img {
+	border: 0px;
+}
+
+a {
+	text-decoration: none;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+.field {
+	float: left;
+	width: 160px;
+	height: 20px;
+	border: #dbdbdb 1px solid;
+	border-radius: 7px;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	font-size: 16px;
+	outline: none;
+}
+
+.field:focus {
+	border-color: #999;
+	color: #000000;
+	-webkit-box-shadow: 0 0 7px #4cdfff;
+	-moz-box-shadow: 0 0 7px #4cdfff;
+}
+
+.field1 {
+	float: left;
+	width: 55px;
+	height: 20px;
+	border: #dbdbdb 1px solid;
+	border-radius: 7px;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	font-size: 16px;
+	outline: none;
+}
+
+.field1:focus {
+	border-color: #999;
+	color: #000000;
+	-webkit-box-shadow: 0 0 7px #4cdfff;
+	-moz-box-shadow: 0 0 7px #4cdfff;
+}
+</style>
+</head>
+
+<body style="background: url(<?php echo ROOT_DOMAIN ?>/img/bg.jpg);">
+<div
+	style="width: 514px; height: 260px; background-image: url(<?php echo ROOT_DOMAIN ?>/img/login.png); margin: 0px auto; position: absolute; left: 50%; top: 50%; margin-left: -257px; margin-top: -130px;">
+<div
+	style="margin-left: 240px; color: #FFF; font-size: 12px; width: 274px; height: 230px; line-height: 22px; padding-top: 30px;">
+
+<form method="post" name = "loginForm" action="/"><!-- 将用户名密码提交到login控制器的loginaction中 -->
+<a style="float: left;">用&nbsp;&nbsp;户&nbsp;</a> <input name="username"
+	type="text" class="field" /> <br />
+<br />
+<a style="float: left;">密&nbsp;&nbsp;码&nbsp; </a> <input name="password"
+	type="password" class="field" /> <br />
+<br />
+
+<a class="large button blue" href = "javascript:loginForm.submit();"
+	style="margin-right: 30px; margin-left: 15px;" onclick="">登录</a></form>
+<a name="errInfo"><?php echo $this->info;?></a><!-- 显示错误信息 --></div>
+</div>
+</body>
+</html>

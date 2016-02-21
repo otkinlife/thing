@@ -1,0 +1,30 @@
+[{
+  "id":1,
+  "text":"用户",
+  "children":[{
+    "id":11,
+    "text":"用户列表",
+    "attributes":{
+      "url":"Admin_Index/userList"
+    }
+  }]
+},{
+  "id":2,
+  "text":"趣事",
+  "children":[{
+    "id":21,
+    "text":"趣事列表",
+    "attributes":{
+      "url":""
+    }
+  },{
+    "id":22,
+    "text":"审核",
+    "attributes":{
+      "url":""
+    }
+  }]
+},{
+  "id":3,
+  "text":"安全退出"
+}]

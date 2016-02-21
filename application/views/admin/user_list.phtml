@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="textml; charset=utf-8" />
+
+<?php
+    $static = new Common_GetStatic();
+    $static->getStaticUrl("easyui");
+    $static->getStaticUrl('js','user_list.js');
+?>
+<title>用户列表</title>
+</head>
+<body>
+<table id="dg">
+<div id="tb">
+<input id="ss"/>
+<a id="add_btn" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true"/>增加</a>
+<a id="edit_btn" class="easyui-linkbutton"  data-options="iconCls:'icon-edit',plain:true">编辑</a>
+<a id="rm_btn" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true"/>删除</a>
+</div>
+</table>
+
+<!--增加-->
+<div id="dlg">
+    <form id="fm" style="margin: 20px;">
+        <table>
+            <tr>
+                <td><label for="name">姓名：</label></td>
+                <td>
+                    <input style="width:100px" class="easyui-validatebox" type="text" name="user_name" data-options="required:true"
+                           missingMessage="请输入姓名" />
+                </td>
+            </tr>
+            <tr>
+                <td><label for="name">Email：</label></td>
+                <td>
+                    <input style="width:100px" class="easyui-validatebox" type="text" name="user_email" data-options="required:true"
+                           missingMessage="请输入Email" />
+                </td>
+            </tr>
+            <tr>
+                <td><label for="name">性别：</label></td>
+                <td>
+                    <input style="width:100px" class="easyui-validatebox" type="text" name="user_sex" />
+                </td>
+            </tr>
+            <tr>
+                <td><label for="name">是否管理员：</label></td>
+                <td>
+                    <input style="width:100px" class="easyui-validatebox" type="text" name="is_admin" />
+                </td>
+            </tr>
+
+            <tr>
+                <td><label for="name">请输入密码：</label></td>
+                <td>
+                    <input style="width:100px" class="easyui-validatebox" type="password" name="user_pwd" />
+                </td>
+            </tr>
+
+            <tr>
+                <td><label for="name">请重复密码：</label></td>
+                <td>
+                    <input style="width:100px" class="easyui-validatebox" type="password"  />
+                </td>
+            </tr>
+        </table>
+        <div id="dlg-buttons" style="text-align: center;margin-top:20px;">
+            <a class="easyui-linkbutton" id="sbt" iconCls="icon-ok">提交</a>
+            <a class="easyui-linkbutton" iconCls="icon-cancel" onClick="javascript:$('#dlg').dialog('close')">取消</a>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
