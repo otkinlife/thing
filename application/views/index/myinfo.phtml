@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Basic Accordion - jQuery EasyUI Mobile Demo</title>
+    <?php
+    $static = new Common_GetStatic();
+    $static->getStaticUrl('easyui_mobile');
+    ?>
+</head>
+<body>
+<div class="easyui-navpanel">
+    <div class="easyui-accordion" fit="true" border="false">
+        <div title="个人资料">
+            <ul class="m-list">
+                <li>WLAN</li>
+                <li>Memory</li>
+                <li>Screen</li>
+                <li>More...</li>
+            </ul>
+        </div>
+        <div title="我的观点" href="_content.html" style="padding:10px"></div>
+    </div>
+</div>
+</body>
+</html>

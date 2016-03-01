@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>观点分享平台</title>
+    <?php
+        $static = new Common_GetStatic();
+        $static->getStaticUrl('easyui_mobile');
+        $static->getStaticUrl('js','app_index.js');
+    ?>
+</head>
+<body>
+<div class="easyui-navpanel">
+    <header>
+        <div class="m-toolbar">
+            <div class="m-title">观点分享平台</div>
+            <div class="m-left">
+                <a href="javascript:void(0)" class="easyui-linkbutton m-back" onclick="$.mobile.back()" plain="true" outline="true">返回</a>
+            </div>
+            <div class="m-right">
+                <a href="javascript:void(0)" class="easyui-menubutton" data-options="iconCls:'icon-more',menu:'#mm',menuAlign:'right',hasDownArrow:false"></a>
+            </div>
+        </div>
+    </header>
+    <iframe id="content" frameborder='0' scrolling='auto' style='width:100%;height:100%;'></iframe>
+    <footer style="padding:2px 3px">
+        <div class="m-buttongroup m-buttongroup-justified" style="width:100%">
+            <a onclick="opencontent('/app_index/showAllThing')" class="easyui-linkbutton" data-options="iconCls:'icon-gc',size:'large',iconAlign:'top',plain:true">广场</a>
+            <a onclick="opencontent('/app_index/showMyInfo')" class="easyui-linkbutton" data-options="iconCls:'icon-mine',size:'large',iconAlign:'top',plain:true">我的</a>
+            <a onclick="opencontent('/app_index/showMyInfo')" class="easyui-linkbutton" data-options="iconCls:'icon-messages',size:'large',iconAlign:'top',plain:true">消息</a>
+            <a onclick="opencontent('/app_index/showMyInfo')" class="easyui-linkbutton" data-options="iconCls:'icon-set',size:'large',iconAlign:'top',plain:true">关于</a>
+        </div>
+    </footer>
+</div>
+<div id="mm" class="easyui-menu" style="width:150px;">
+    <div data-options="iconCls:'icon-undo'">Undo</div>
+    <div data-options="iconCls:'icon-redo'">Redo</div>
+    <div class="menu-sep"></div>
+    <div>Cut</div>
+    <div>Copy</div>
+    <div>设置</div>
+    <div class="menu-sep"></div>
+    <div data-options="iconCls:'icon-remove'">退出</div>
+</div>
+</body>
+</html>

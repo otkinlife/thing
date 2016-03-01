@@ -94,3 +94,16 @@
 .icon-large-chart{
 	background:url('icons/large_chart.png') no-repeat center center;
 }
+.icon-gc{
+	background:url('icons/gc.png') no-repeat center center;
+}
+.icon-mine{
+	background:url('icons/mine.png') no-repeat center center;
+}
+.icon-messages{
+	background:url('icons/messages.png') no-repeat center center;
+}
+
+.icon-set{
+	background:url('icons/about.png') no-repeat center center;
+}

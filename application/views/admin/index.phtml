@@ -6,7 +6,7 @@
 <?php
 	$static = new Common_GetStatic();
 	$static->getStaticUrl("easyui");
-	$static->getStaticUrl('js','owner_list.js');
+	$static->getStaticUrl('js','user_list.js');
 ?>
 <title>观点分享平台</title>
 <script type="text/javascript">
@@ -61,10 +61,12 @@ COLOR: #FFF;
 	
 	<div region="north" style="height:80px; background-image:url(<?php $static->getImg('banner.png'); ?>);background-repeat:no-repeat;" align="center">
     	<div style="margin-left:300px;float:left;padding:0px;">
-        	<div style="float:left"><!--用于放logo<img src=""/>--></div><div style="margin-top:20px; float:right"><font color="#fff" size="+3"><b>观点分享平台后台管理系统</b></font></div>
+        	<div style="float:left"><img src="<?php $static->getImg('logo.png'); ?>" style="width: 50px;margin-top: 10px;"/>
+				</div><div style="margin-top:20px; float:right"><font color="#fff" size="+2"><b>观点分享平台后台管理系统</b></font>
+			</div>
 		</div>
 		<div style="margin-top: 55px; margin-right:20px;float:right;padding:0px;">
-        <a>欢迎您，<?php echo $jkc ?></a>
+        <a></a>
 		</div>
 	</div>
 	<div region="west" style="width: 220px;padding: 5px;" title="导航菜单" split="true">

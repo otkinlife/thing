@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 /**
  * Created by PhpStorm.
@@ -34,6 +34,16 @@ class Common_GetStatic
                 echo "<script type='text/javascript' src='".$easyui_document."jquery.min.js'></script>";
                 echo "<script type='text/javascript' src='".$easyui_document."jquery.easyui.min.js'></script>";
                 echo "<script type='text/javascript' src='".$easyui_document."locale/easyui-lang-zh_CN.js'></script>";
+                break;
+            case "easyui_mobile":
+                echo "<link rel='stylesheet' type='text/css' href='".$css_document."common.css'>";
+                echo "<link rel='stylesheet' type='text/css' href='".$easyui_document."themes/metro/easyui.css'>";
+                echo "<link rel='stylesheet' type='text/css' href='".$easyui_document."themes/mobile.css'>";
+                echo "<link rel='stylesheet' type='text/css' href='".$easyui_document."themes/icon.css'>";
+                echo "<link rel='stylesheet' type='text/css' href='".$easyui_document."themes/color.css'>";
+                echo "<script type='text/javascript' src='".$easyui_document."jquery.min.js'></script>";
+                echo "<script type='text/javascript' src='".$easyui_document."jquery.easyui.min.js'></script>";
+                echo "<script type='text/javascript' src='".$easyui_document."jquery.easyui.mobile.js'></script>";
                 break;
         }
     }

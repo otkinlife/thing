@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <?php
+    $static = new Common_GetStatic();
+    $static->getStaticUrl('easyui_mobile');
+    ?>
+    <style>
+        .left{
+            float: left;
+        }
+        .info{
+            margin-left: 12px;
+            margin-top: 8px;
+        }
+        .username{
+            font-size: 16px;
+            font-family: "黑体";
+        }
+        .content{
+            padding-left: 10px;
+            border-left: 1px solid silver;
+        }
+
+    </style>
+</head>
+<body>
+<div class="easyui-navpanel">
+    <ul id="list">
+        <li>
+            <img class="header-img left" src="<?php echo $static->getImg('nohead.png')?>">
+            <div class="left info">
+                <span class="username">雨中</span><br/>
+                <span class="m-badge c2">评论数：6</span>
+            </div>
+            <div class="left info content">
+                我是一个非常认真的人<br>不是呢，他说不是
+            </div>
+        </li>
+        <li>
+            <img class="header-img left" src="<?php echo $static->getImg('login.png')?>">
+            <div class="left info">
+                <span class="username">雨中</span><br/>
+                <span class="m-badge c2">评论数：6</span>
+            </div>
+            <div class="left info content">
+                我是一个非常认真的人<br>不是呢，他说不是
+            </div>
+        </li>
+        <li>
+            <img class="header-img left" src="<?php echo $static->getImg('bg.jpg')?>">
+            <div class="left info">
+                <span class="username">2sad</span><br/>
+                <span class="m-badge c2">评论数：16</span>
+            </div>
+            <div class="left info content">
+                我是一个非常认真的人<br>不是wqq呢，他说不是
+            </div>
+        </li>
+        <li>
+            <img class="header-img left" src="<?php echo $static->getImg('nohead.png')?>">
+            <div class="left info">
+                <span class="username">请问</span><br/>
+                <span class="m-badge c2">评论数：2</span>
+            </div>
+            <div class="left info content">
+                我是一个非常认真的人<br>不是呢，他说不是
+            </div>
+        </li>
+        <li>
+            <img class="header-img left" src="<?php echo $static->getImg('nohead.png')?>">
+            <div class="left info">
+                <span class="username">雨中</span><br/>
+                <span class="m-badge c2">评论数：6</span>
+            </div>
+            <div class="left info content">
+                我是一个非常认真的人<br>不是呢，他说不是
+            </div>
+        </li>
+    </ul>
+</div>
+<div id="p2" class="easyui-navpanel">
+
+</div>
+</body>
+</html>
+<script type="text/javascript">
+    $(function(){
+        $("#list").datalist({
+            fit: true,
+            lines: true,
+            border: false,
+            textFormatter: function(value){
+                return '<a href\'javascript:void(0)\' class=\'datalist-link\'>' + value + '</a>';
+            },
+            onClickRow: function(index,row){
+                $.mobile.go('#p2');
+            }
+        });
+    })
+</script>
