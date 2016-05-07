@@ -15,13 +15,19 @@
     "id":21,
     "text":"趣事列表",
     "attributes":{
-      "url":""
+      "url":"Admin_Thing/thingList"
     }
   },{
     "id":22,
     "text":"审核",
     "attributes":{
-      "url":""
+      "url":"Admin_Thing/passThingList"
+    }
+  },{
+    "id":23,
+    "text":"评论列表",
+    "attributes":{
+      "url":"Admin_Comments/commentsList"
     }
   }]
 },{

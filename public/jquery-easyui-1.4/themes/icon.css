@@ -107,3 +107,7 @@
 .icon-set{
 	background:url('icons/about.png') no-repeat center center;
 }
+
+.icon-email{
+	background:url('icons/email.png') no-repeat center center;
+}

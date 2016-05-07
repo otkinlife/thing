@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/application/controllers/Admin/Comments.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/application/controllers/Admin/Thing.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/application/controllers/App/Thing.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/application/library/Base/Db.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/application/models/collect.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/application/models/comment.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/application/models/thing.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/application/views/admin/comments_list.phtml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/application/views/admin/pass_thing_list.phtml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/application/views/admin/thing_list.phtml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/application/views/index/collect.phtml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/application/views/index/comments.phtml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/application/views/index/message.phtml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/views/index/myinfo.phtml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/public/js/myinfo.js" charset="UTF-8" />
   </component>
 </project>

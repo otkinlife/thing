@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <?php
+    $static = new Common_GetStatic();
+    $static->getStaticUrl('easyui_mobile');
+    $static->getStaticUrl('js', 'myinfo.js');
+    ?>
+    <style>
+        .content {
+            width: 55%;
+            display: block;
+            word-break: break-all;
+            word-wrap: break-word;
+            white-space: normal;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body style="font-size: 12px">
+<ul class="m-list">
+    <li>内容：
+        <div class="content"><?= $content['thing_content'] ?></div>
+        <div class="m-right">
+            <a id="comm" href="#" class="easyui-linkbutton">评论</a>
+            <a id="coll" href="#" class="easyui-linkbutton">收藏</a>
+            <a id="atten" href="#" class="easyui-linkbutton">关注</a>
+        </div>
+    </li>
+    <div>
+        <ul class="m-list">
+            <?php foreach ($comments as $row) { ?>
+                <li>
+                    <?= $row['comment_content'] ?>
+                    <div style="float: right">
+                        <a style="margin-top: 5px;">发表者：<?= $content['user_id'] ?></a>
+                    </div>
+                </li>
+            <?php } ?>
+        </ul>
+    </div>
+</ul>
+
+<div id="addComment" class="easyui-dialog" style="padding:10px 6px;width:80%;">
+    <div style="margin-bottom:10px">
+        <textarea id="comment_content" rows="3" style="width:98%;"></textarea>
+    </div>
+    <div class="dialog-button" style="text-align: center;">
+        <a id="fb_comment" class="easyui-linkbutton" style="width:40%;height:35px">发表</a>
+        <a class="easyui-linkbutton" style="width:40%;height:35px" onclick="$('#addComment').dialog('close')">取消</a>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    $(function () {
+        $("#addComment").dialog({
+            closed: true
+        });
+        //点击打开发表评论的面板
+        $("#comm").click(function () {
+            $("#addComment").dialog({
+                title: "发表观点"
+            });
+            $('#addComment').dialog('open').dialog('center');
+        });
+
+        //发表评论
+        $('#fb_comment').on('click', function () {
+            var comment_content = $('#comment_content').val();
+            var thing_id = "<?=$content['thing_id']?>";
+            $.ajax({
+                url: '/app_comments/addComment',
+                type: "POST",
+                dataType: "JSON",
+                data: {comment_content: comment_content, thing_id: thing_id},
+                success: function (res) {
+                    if (res.code == 0) {
+                        alert("发表成功");
+                        window.location.reload();
+                    } else {
+                        alert("发表失败");
+                    }
+                }
+            });
+        });
+        //收藏取消收藏
+        $('#coll').on('click', function () {
+            var thing_id = "<?=$content['thing_id']?>";
+            $.ajax({
+                url: '/app_collect/changeCollect',
+                type: "POST",
+                dataType: "JSON",
+                data: {thing_id: thing_id},
+                success: function (res) {
+                    console.log(res);
+                    alert(res.msg);
+                }
+            });
+        });
+        //关注
+        $('#atten').on('click', function () {
+            var friend_id = "<?=$content['user_id']?>";
+            $.ajax({
+                url: '/app_collect/attentionFriend',
+                type: "POST",
+                dataType: "JSON",
+                data: {friend_id: friend_id},
+                success: function (res) {
+                    if (res.code == 0) {
+                        alert('关注成功');
+                    } else {
+                        alert('关注失败');
+                    }
+                }
+            });
+        })
+    })
+</script>

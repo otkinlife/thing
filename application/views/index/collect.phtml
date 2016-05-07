@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Basic Accordion - jQuery EasyUI Mobile Demo</title>
+    <?php
+    $static = new Common_GetStatic();
+    $static->getStaticUrl('easyui_mobile');
+    $static->getStaticUrl('js','myinfo.js');
+    ?>
+
+</head>
+<body>
+<div class="easyui-navpanel">
+    <div class="easyui-accordion" fit="true" border="false">
+        <div title="我的收藏列表">
+            <ul class="m-list" id="list">
+                <?php if(empty($myCollectList)) { ?>
+                    <div style="margin: 10px; text-align: center; color: #919191">
+                        你的收藏列表空空如也~！
+                    </div>
+                <?php } else {
+                    foreach ($myCollectList as $row) { ?>
+                        <li value="<?=$row['thing_id']?>">
+                            <?=$row['thing_content']?>
+                        </li>
+                    <?php }
+                } ?>
+            </ul>
+        </div>
+        <div title="我的朋友">
+            <ul class="m-list" id="list">
+
+                <?php if(empty($friendList)) { ?>
+                    <div style="margin: 10px; text-align: center; color: #919191">
+                        你还没有关注过其他人
+                    </div>
+                <?php } else {
+                foreach ($friendList as $row) { ?>
+                    <li>
+                        <?=$row['user_name']?>
+                        <span class="m-right">
+                           <a class="easyui-linkbutton noatt" data-fid="<?=$row['id']?>">取消关注</a>
+                           <a class="easyui-linkbutton send" data-fid="<?=$row['id']?>">私信</a>
+                        </span>
+                    </li>
+                <?php }
+                } ?>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="sendMessage" class="easyui-dialog" title="发送私信" style="padding:10px 6px;width:80%;">
+    <div style="margin-bottom:10px">
+        <textarea id="message_content" rows="3" style="width:98%;"></textarea>
+    </div>
+    <div class="dialog-button" style="text-align: center;">
+        <a id="send" class="easyui-linkbutton" style="width:40%;height:35px">发送</a>
+        <a class="easyui-linkbutton" style="width:40%;height:35px" onclick="$('#sendMessage').dialog('close')">取消</a>
+    </div>
+</div>
+<iframe id="p2" class="easyui-navpanel"></iframe>
+</body>
+<script>
+        $(function(){
+            var receiver;
+            $('.show').on('click', function() {
+                $('#showMessage').dialog('open').dialog('center');
+            });
+            $('.send').on('click', function() {
+                receiver = $(this).data('fid');
+                $('#sendMessage').dialog('open').dialog('center');
+            });
+            var thing_id;
+            $("#list").datalist({
+                fit: true,
+                lines: true,
+                border: false,
+                textFormatter: function(value){
+                    return '<a href\'javascript:void(0)\' class=\'datalist-link\'>' + value + '</a>';
+                },
+                onClickRow: function(index,row){
+                    var thing_id =  row.value;
+                    $("#p2").attr("src","/app_comments/showCommentsList?thing_id="+thing_id);
+                    $.mobile.go('#p2');
+                }
+            });
+            //取消
+            $('.noatt').on('click', function () {
+                var friend_id = $(this).data('fid');
+                $.ajax({
+                    url: '/app_collect/removeFriend',
+                    type: "POST",
+                    dataType: "JSON",
+                    data: {friend_id: friend_id},
+                    success: function (res) {
+                        if (res.code == 0) {
+                            window.location.reload();
+                            alert('取消关注成功');
+                        } else {
+                            alert('取消关注失败');
+                        }
+                    }
+                });
+            });
+
+            //发送私信
+            $('#send').on('click', function () {
+                var message_content = $('#message_content').val();
+                $.ajax({
+                    url: '/app_collect/sendMessage',
+                    type: "POST",
+                    dataType: "JSON",
+                    data: {friend_id: receiver, message_content:message_content},
+                    success: function (res) {
+                        if (res.code == 0) {
+                            $('#sendMessage').dialog('close');
+                            alert('发送成功');
+                        } else {
+                            alert('发送失败');
+                        }
+                    }
+                });
+            });
+        })
+</script>
+</html>

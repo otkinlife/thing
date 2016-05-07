@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>观点分享平台</title>
+    <title>观点分享平台-注册</title>
     <?php
         $static = new Common_GetStatic();
         $static->getStaticUrl('easyui_mobile');
@@ -17,7 +17,7 @@
 <div class="easyui-navpanel">
     <header>
         <div  class="m-toolbar">
-            <span class="m-title">请先登录平台</span>
+            <span class="m-title">请填写注册信息</span>
         </div>
     </header>
     <div style="margin:20px auto;width:100px;height:100px;border-radius:100px;overflow:hidden">
@@ -27,14 +27,28 @@
         <div style="margin-bottom:10px">
             <input id="user_name" class="easyui-textbox" data-options="prompt:'用户名',iconCls:'icon-man'" style="width:100%;height:38px">
         </div>
-        <div>
+        <div style="margin-bottom:10px">
             <input id="user_pwd" class="easyui-textbox" type="password" data-options="prompt:'密码',iconCls:'icon-lock'" style="width:100%;height:38px">
         </div>
+        <div style="margin-bottom:10px">
+            <input id="re_pwd" class="easyui-textbox" type="password" data-options="prompt:'确认密码',iconCls:'icon-lock'" style="width:100%;height:38px">
+        </div>
+        <div style="margin-bottom:10px">
+            <select id="user_sex" class="easyui-combobox" name="dept" style="width:100%;height:38px" panelHeight="42px">
+                <option value="男">男</option>
+                <option value="女">女</option>
+            </select>
+        </div>
+        <div>
+            <input id="user_email" class="easyui-textbox" type="text" data-options="prompt:'用户邮箱',iconCls:'icon-email'" style="width:100%;height:38px">
+        </div>
+
+
         <div style="text-align:center;margin-top:30px">
-            <a id="login" class="easyui-linkbutton" style="width:100%;height:40px"><span style="font-size:16px">登录</span></a>
+            <a id="register" class="easyui-linkbutton" style="width:100%;height:40px"><span style="font-size:16px">点击注册</span></a>
         </div>
         <div style="text-align:center;margin-top:30px">
-            <a id="goregister" class="easyui-linkbutton" plain="true" outline="true" style="width:100px;height:35px"><span style="font-size:16px">注册</span></a>
+            <a id="gologin" class="easyui-linkbutton" plain="true" outline="true" style="width:100px;height:35px"><span style="font-size:16px">去登录</span></a>
         </div>
     </div>
 </div>

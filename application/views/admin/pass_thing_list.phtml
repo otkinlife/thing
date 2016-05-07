@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="textml; charset=utf-8" />
+
+    <?php
+    $static = new Common_GetStatic();
+    $static->getStaticUrl("easyui");
+    $static->getStaticUrl('js','pass_thing_list.js');
+    ?>
+    <title>趣事列表</title>
+</head>
+<body>
+<table id="dg">
+    <div id="tb">
+        <input id="ss"/>
+        <a id="rm_btn" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true"/>删除</a>
+        <a id="pass_btn" class="easyui-linkbutton" data-options="iconCls:'icon-ok',plain:true"/>审核</a>
+    </div>
+</table>
+
+<div id="dlg">
+    <form id="fm" style="margin: 20px;">
+        <table>
+            <tr>
+                <td><label for="name">发表时间：</label></td>
+                <td>
+                    <div style="width:200px"  type="text" name="create_time" id="create_time" />
+                </td>
+            </tr>
+            <tr>
+                <td><label for="name">发表者：</label></td>
+                <td>
+                    <div style="width:200px"  type="text" name="user_id" id="user_id" />
+                </td>
+            </tr>
+            <tr>
+                <td><label for="name">发表内容：</label></td>
+                <td>
+                    <div style="width:200px"  type="text" name="thing_content" id="thing_content" />
+                </td>
+            </tr>
+        </table>
+        <div id="dlg-buttons" style="text-align: center; margin-top: 180px">
+            <a class="easyui-linkbutton" id="sbt" iconCls="icon-ok">通过审核</a>
+            <a class="easyui-linkbutton" iconCls="icon-cancel" onClick="javascript:$('#dlg').dialog('close')">取消</a>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

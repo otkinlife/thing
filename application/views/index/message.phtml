@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <?php
+    $static = new Common_GetStatic();
+    $static->getStaticUrl('easyui_mobile');
+    ?>
+    <style>
+        .content {
+            width: 55%;
+            display: block;
+            word-break: break-all;
+            word-wrap: break-word;
+            white-space: normal;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body style="font-size: 12px">
+<div>
+    <ul class="m-list">
+        <?php foreach ($messageList as $row) { ?>
+            <li>
+                来自<span style="color: #0000FF"><?=$row['user_name']?></span>的消息：
+                <?=$row['message_content'];?>
+                <span class="m-right">
+                    <a class="easyui-linkbutton send" data-fid="<?=$row['user_sender']?>">回复</a>
+                </span>
+            </li>
+        <?php } ?>
+    </ul>
+</div>
+<div id="sendMessage" class="easyui-dialog" title="回复" style="padding:10px 6px;width:80%;">
+    <div style="margin-bottom:10px">
+        <textarea id="message_content" rows="3" style="width:98%;"></textarea>
+    </div>
+    <div class="dialog-button" style="text-align: center;">
+        <a id="send" class="easyui-linkbutton" style="width:40%;height:35px">发送</a>
+        <a class="easyui-linkbutton" style="width:40%;height:35px" onclick="$('#sendMessage').dialog('close')">取消</a>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    $(function () {
+        var receiver;
+        $("#sendMessage").dialog({
+            closed : true
+        });
+        $('.send').on('click', function() {
+            receiver = $(this).data('fid');
+            $('#sendMessage').dialog('open').dialog('center');
+        });
+        //发送私信
+        $('#send').on('click', function () {
+            var message_content = $('#message_content').val();
+            $.ajax({
+                url: '/app_collect/sendMessage',
+                type: "POST",
+                dataType: "JSON",
+                data: {friend_id: receiver, message_content:message_content},
+                success: function (res) {
+                    if (res.code == 0) {
+                        $('#sendMessage').dialog('close');
+                        alert('发送成功');
+                    } else {
+                        alert('发送失败');
+                    }
+                }
+            });
+        });
+    })
+</script>

@@ -50,7 +50,11 @@ class userModel extends Base_Db {
             'user_sex' => $user_sex,
             'is_admin' => $is_admin
         );
-        $res = $this->db->insertInto('thing_user',$arr)->execute();
+        try{
+            $res = $this->db->insertInto('thing_user',$arr)->execute();
+        }catch (Exception $e) {
+            echo $e->getMessage();
+        }
         return $res;
     }
 
@@ -122,7 +126,33 @@ class userModel extends Base_Db {
         $res = $this->db->from('thing_user')
             ->where('user_name', $user_name)
             ->where('user_pwd', $user_pwd)
-            ->count();
+            ->fetch('id');
+        return $res;
+    }
+
+    /**
+     * 过去用户信息
+     * @param $id
+     * @return mixed
+     */
+    public function getUserInfoById($id) {
+        $res = $this->db->from('thing_user')
+            ->where('id', $id)
+            ->fetch();
+        return $res;
+    }
+
+    /**
+     * 更新某一用户信息
+     * @param $id
+     * @param $update_type
+     * @param $value
+     * @return PDOStatement
+     */
+    public function updateUserByType($id, $update_type, $value) {
+        $res = $this->db->update('thing_user',array($update_type=>"$value"))
+            ->where('id', $id)
+            ->execute();
         return $res;
     }
 }

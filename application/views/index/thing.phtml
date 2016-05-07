@@ -26,22 +26,17 @@
     <iframe id="content" frameborder='0' scrolling='auto' style='width:100%;height:100%;'></iframe>
     <footer style="padding:2px 3px">
         <div class="m-buttongroup m-buttongroup-justified" style="width:100%">
-            <a onclick="opencontent('/app_index/showAllThing')" class="easyui-linkbutton" data-options="iconCls:'icon-gc',size:'large',iconAlign:'top',plain:true">广场</a>
+            <a onclick="opencontent('/app_thing/showAllThing')" class="easyui-linkbutton" data-options="iconCls:'icon-gc',size:'large',iconAlign:'top',plain:true">广场</a>
             <a onclick="opencontent('/app_index/showMyInfo')" class="easyui-linkbutton" data-options="iconCls:'icon-mine',size:'large',iconAlign:'top',plain:true">我的</a>
-            <a onclick="opencontent('/app_index/showMyInfo')" class="easyui-linkbutton" data-options="iconCls:'icon-messages',size:'large',iconAlign:'top',plain:true">消息</a>
-            <a onclick="opencontent('/app_index/showMyInfo')" class="easyui-linkbutton" data-options="iconCls:'icon-set',size:'large',iconAlign:'top',plain:true">关于</a>
+            <a onclick="opencontent('/app_collect/myMessageList')" class="easyui-linkbutton" data-options="iconCls:'icon-messages',size:'large',iconAlign:'top',plain:true">
+                消息<?php if($num > 0) { ?> <span class="m-badge"><?=$num?></span> <?php } ?>
+            </a>
+            <a onclick="opencontent('/app_collect/showCollect')" class="easyui-linkbutton" data-options="iconCls:'icon-set',size:'large',iconAlign:'top',plain:true">其他</a>
         </div>
     </footer>
 </div>
 <div id="mm" class="easyui-menu" style="width:150px;">
-    <div data-options="iconCls:'icon-undo'">Undo</div>
-    <div data-options="iconCls:'icon-redo'">Redo</div>
-    <div class="menu-sep"></div>
-    <div>Cut</div>
-    <div>Copy</div>
-    <div>设置</div>
-    <div class="menu-sep"></div>
-    <div data-options="iconCls:'icon-remove'">退出</div>
+    <div id="exit" data-options="iconCls:'icon-remove'">退出</div>
 </div>
 </body>
 </html>

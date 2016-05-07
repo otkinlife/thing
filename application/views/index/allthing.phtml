@@ -8,82 +8,61 @@
     $static->getStaticUrl('easyui_mobile');
     ?>
     <style>
-        .left{
+        .header-img {
+            width:15%;
+            max-width:50px;
+            height:50px;
+        }
+        .left {
             float: left;
         }
         .info{
-            margin-left: 12px;
+            margin-left: 5%;
             margin-top: 8px;
         }
-        .username{
+        .username {
+            width:13%;
             font-size: 16px;
             font-family: "黑体";
         }
-        .content{
-            padding-left: 10px;
-            border-left: 1px solid silver;
+        .line {
+            width:15%;
+            padding-right: 10px;
+            border-right: 1px solid silver;
         }
-
+        .content {
+            width: 55%;
+            display:block;
+            word-break: break-all;
+            word-wrap: break-word;
+            white-space:normal;
+            overflow:hidden;
+        }
+        .comment {
+            width: 90%;
+            max-width:50px;
+        }
     </style>
 </head>
 <body>
 <div class="easyui-navpanel">
     <ul id="list">
-        <li>
+        <?php
+        foreach ($thingList as $list) { ?>
+        <li value="<?=$list['thing_id']?>">
             <img class="header-img left" src="<?php echo $static->getImg('nohead.png')?>">
-            <div class="left info">
-                <span class="username">雨中</span><br/>
-                <span class="m-badge c2">评论数：6</span>
+            <div class="left info line">
+                <span class="username"><?=$list['user_name']?></span><br/>
+                <span class="m-badge c2 comment">评论：<?=$list['num']?></span>
             </div>
             <div class="left info content">
-                我是一个非常认真的人<br>不是呢，他说不是
+                <?=$list['thing_content']?>
             </div>
         </li>
-        <li>
-            <img class="header-img left" src="<?php echo $static->getImg('login.png')?>">
-            <div class="left info">
-                <span class="username">雨中</span><br/>
-                <span class="m-badge c2">评论数：6</span>
-            </div>
-            <div class="left info content">
-                我是一个非常认真的人<br>不是呢，他说不是
-            </div>
-        </li>
-        <li>
-            <img class="header-img left" src="<?php echo $static->getImg('bg.jpg')?>">
-            <div class="left info">
-                <span class="username">2sad</span><br/>
-                <span class="m-badge c2">评论数：16</span>
-            </div>
-            <div class="left info content">
-                我是一个非常认真的人<br>不是wqq呢，他说不是
-            </div>
-        </li>
-        <li>
-            <img class="header-img left" src="<?php echo $static->getImg('nohead.png')?>">
-            <div class="left info">
-                <span class="username">请问</span><br/>
-                <span class="m-badge c2">评论数：2</span>
-            </div>
-            <div class="left info content">
-                我是一个非常认真的人<br>不是呢，他说不是
-            </div>
-        </li>
-        <li>
-            <img class="header-img left" src="<?php echo $static->getImg('nohead.png')?>">
-            <div class="left info">
-                <span class="username">雨中</span><br/>
-                <span class="m-badge c2">评论数：6</span>
-            </div>
-            <div class="left info content">
-                我是一个非常认真的人<br>不是呢，他说不是
-            </div>
-        </li>
+        <?php } ?>
     </ul>
 </div>
-<div id="p2" class="easyui-navpanel">
-
-</div>
+<iframe id="p2" class="easyui-navpanel"></iframe>
 </body>
 </html>
 <script type="text/javascript">
@@ -96,6 +75,8 @@
                 return '<a href\'javascript:void(0)\' class=\'datalist-link\'>' + value + '</a>';
             },
             onClickRow: function(index,row){
+                var thing_id =  row.value;
+                $("#p2").attr("src","/app_comments/showCommentsList?thing_id="+thing_id);
                 $.mobile.go('#p2');
             }
         });

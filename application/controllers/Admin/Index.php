@@ -103,4 +103,5 @@ class Admin_IndexController extends Base_Core {
         $arr = array('total' => $total,'rows'=>$res);
         echo json_encode($arr);
     }
+
 }

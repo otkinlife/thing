@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="textml; charset=utf-8" />
+
+    <?php
+    $static = new Common_GetStatic();
+    $static->getStaticUrl("easyui");
+    $static->getStaticUrl('js','thing_list.js');
+    ?>
+    <title>趣事列表</title>
+</head>
+<body>
+<table id="dg">
+    <div id="tb">
+        <input id="ss"/>
+        <a id="rm_btn" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true"/>删除</a>
+    </div>
+</table>
+</body>
+</html>

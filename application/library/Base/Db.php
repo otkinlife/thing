@@ -11,7 +11,8 @@ class Base_Db {
     public $db;
 
     function __construct(){
-        $pdo = new PDO("mysql:dbname=thing", "root", "");
+        mysql_query('set names utf8');
+        $pdo = new PDO("mysql:dbname=thing", "root", "",array (PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8';"));
         $this->db = new PDO_FluentPDO($pdo);
     }
 }
